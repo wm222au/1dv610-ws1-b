@@ -1,26 +1,23 @@
-<html>
-    <head>
-        <title>Hang man</title>
-    </head>
-    <body>
-        <form action="./" method="post">
-        <input type="text" name="letter">
-        <input type="submit">
-        </form>
-    </body>
-</html>
-
 <?php
-require_once "Game.php";
-$game = new Game("exempel");
+/**
+ * Gets classes
+ */
+require_once 'Controller/GameController.php';
+require_once 'View/GameView.php';
 
-$postRequest = $_POST["letter"];
+$controller = new GameController();
+?>
 
-if (isset($postRequest)) {
-    $game->detectLetter($postRequest);
-}
-
-$guessedWord = $game->guessedWord();
-//$guessedLetter = $game->detectLetter();
-
-echo $guessedWord;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf8'>
+    <title>Hangman</title>
+  </head>
+  <body>
+  <h1>Hangman</h1>
+<?php
+$controller->askForGuess();
+?>
+  </body>
+</html>
