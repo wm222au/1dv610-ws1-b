@@ -2,10 +2,12 @@
 /**
  * Gets classes
  */
+require_once 'Hangman.php';
 require_once 'Controller/GameController.php';
 require_once 'View/GameView.php';
 
-$controller = new GameController();
+$controller = new \Controller\GameController();
+$hangman = new Hangman('abba');
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +19,7 @@ $controller = new GameController();
   <body>
   <h1>Hangman</h1>
 <?php
-$controller->askForGuess();
+echo $controller->askForGuess();
 ?>
   </body>
 </html>

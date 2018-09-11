@@ -3,7 +3,6 @@ namespace View;
 
 class GameView
 {
-
     public function __construct()
     {
     }
@@ -12,7 +11,7 @@ class GameView
     {
         $gameView = '
         <form action="./" method="get">
-          <input type="text" name="guessWord" maxlength="1"><br>
+          <input type="text" name="guessLetter" maxlength="1"><br>
           <input type="submit" value="Translate">
           </form>
         ';

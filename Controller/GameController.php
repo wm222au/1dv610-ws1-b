@@ -1,22 +1,26 @@
 <?php
 namespace Controller;
 
-class GuessWord
+class GameController
 {
     private $view;
-    private $user;
-    public function __construct(\Model\User $user)
-    {
-        $this->user = $user;
-        $this->view = new \View\HelloView($this->user);
+    // private $user;
 
+    public function __construct()
+    {
+        // $this->user = $user;
+        $this->view = new \View\GameView();
     }
+
     public function askForGuess(): string
     {
-        if ($this->view->userWantsToSayHello()) {
-            $name = $this->view->getUserName();
-            $this->user->setName($name);
-        }
+        global $hangman;
+        $guessedLetter = (isset($_GET['guessLetter']) ? $_GET['guessLetter'] : '');
+
+        var_dump($guessedLetter);
+
+        $hangman->guessLetter($guessedLetter);
+
         return $this->view->show();
     }
 }
