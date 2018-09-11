@@ -3,7 +3,7 @@
         <title>Hang man</title>
     </head>
     <body>
-        <form action="" method="post">
+        <form action="./" method="post">
         <input type="text" name="letter">
         <input type="submit">
         </form>
@@ -11,12 +11,12 @@
 </html>
 
 <?php
-require_once("Game.php");
+require_once "Game.php";
 $game = new Game("exempel");
 
 $postRequest = $_POST["letter"];
 
-if(isset($postRequest)) {
+if (isset($postRequest)) {
     $game->detectLetter($postRequest);
 }
 
