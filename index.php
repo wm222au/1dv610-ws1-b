@@ -11,12 +11,16 @@
 </html>
 
 <?php
-
-
 require_once("Game.php");
 $game = new Game("exempel");
 
-$length = $game->guessedWord();
-$guessedLetter = $game->detectLetter();
+$postRequest = $_POST["letter"];
 
-echo $guessedLetter;
+if(isset($postRequest)) {
+    $game->detectLetter($postRequest);
+}
+
+$guessedWord = $game->guessedWord();
+//$guessedLetter = $game->detectLetter();
+
+echo $guessedWord;

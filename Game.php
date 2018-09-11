@@ -18,13 +18,17 @@
             }
         }
 
-        public function detectLetter(){
-            return $_POST["letter"];
-            /*foreach($this->letterArray as $letter){
+        public function detectLetter($userInput){
+            $nr = 0;
+            foreach($this->letterArray as $letter){
                 if($userInput === $letter){
-                    //ersätt matchning i guessedLetter
+                    //ersätta värdet i guessedWord
+                    $this->guessedWord[$nr] = $userInput;
+                    //echo "hej";
                 }
-            }*/
+                $nr .= 1;
+                //echo "hej";
+        }
         }
 
         public function guessedWord(){
