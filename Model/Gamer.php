@@ -15,8 +15,15 @@ class Gamer
         return $this->guessedLetters;
     }
 
-    public function addGuessedLetter(string $letter)
+    public function addGuessedLetter(string $letter): bool
     {
+        $letter = strtolower($letter);
+        foreach ($this->guessedLetters as $guessed) {
+            if ($guessed == $letter) {
+                return false;
+            }
+        }
         $this->guessedLetters[] = $letter;
+        return true;
     }
 }
