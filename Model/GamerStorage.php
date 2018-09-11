@@ -4,7 +4,7 @@ namespace Model;
 
 session_start(); // Make sure that the session is up and running.
 
-class Storage
+class GamerStorage
 {
     // Could change this one into a non-static variable for easier reusability for multiple storages?
     private static $SESSION_KEY = "HANGMAN_PHP_SESSION";
@@ -34,7 +34,7 @@ class Storage
         if ($this->exists($id)) {
             return $_SESSION[$id . $this->getSessionKey($id)];
         } else {
-            return null;
+            return new Gamer();
         }
 
     }

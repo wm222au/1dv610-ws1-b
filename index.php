@@ -5,9 +5,14 @@
 require_once 'Hangman.php';
 require_once 'Controller/GameController.php';
 require_once 'View/GameView.php';
+require_once "Model/Gamer.php";
+require_once "Model/GamerStorage.php";
 
-$controller = new \Controller\GameController();
-$hangman = new Hangman('abba');
+$storage = new \Model\GamerStorage();
+$gamer = $storage->loadEntry('gamer');
+$hangman = new Hangman('abba', $gamer);
+$controller = new \Controller\GameController($gamer);
+$storage->saveEntry('gamer', $gamer);
 ?>
 
 <!DOCTYPE html>

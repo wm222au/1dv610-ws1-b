@@ -1,19 +1,21 @@
 <?php
 class Hangman
 {
+    private $gamer;
     private $wordToGuess;
     private $guessedLetters;
 
-    public function __construct($wordToGuess)
+    public function __construct($wordToGuess, $gamer)
     {
+        $this->gamer = $gamer;
         $this->wordToGuess = $wordToGuess;
         $this->guessedLetters = array();
     }
 
-    public function getCorrectLetters(): bool
+    public function getCorrectLetters(): array
     {
         $correctLetters = array();
-        foreach ($this->guessedLetters as $letter) {
+        foreach ($this->gamer->getGuessedLetters() as $letter) {
             if (strpos($this->wordToGuess, $letter)) {
                 $correctLetters[] = $letter;
             }
@@ -24,10 +26,5 @@ class Hangman
     public function getWordToGuess(): string
     {
         return $this->wordToGuess;
-    }
-
-    public function guessLetter($letter)
-    {
-        $this->guessedLetters[] = $letter;
     }
 }
